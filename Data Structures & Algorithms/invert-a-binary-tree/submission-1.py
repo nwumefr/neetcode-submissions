@@ -1,0 +1,24 @@
+# Definition for a binary tree node.
+# class TreeNode:
+#     def __init__(self, val=0, left=None, right=None):
+#         self.val = val
+#         self.left = left
+#         self.right = right
+
+class Solution:
+    def invertTree(self, root: Optional[TreeNode]) -> Optional[TreeNode]:
+        if root is None:
+            return root
+        if root.left == None and root.right == None:
+            # print(root.val,root.left,root.right)
+            return root
+        else:
+            temp = root.left
+            root.left = root.right
+            root.right = temp
+            # print(root.val,root.left.val,root.right.val)
+            self.invertTree(root.left)
+            self.invertTree(root.right)
+        return root
+        
+        
